@@ -1,86 +1,110 @@
-*
-{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'póppis', sans-serif;
 }
 
-section{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: #042104;
-    animation: animateColor 8s linear infinite;
+    min-height: 100vh;   
 }
 
-@keyframes animateColor {
-    0%
-    {
-        filter: hue-rotate(0deg);
-    }
-
-    100% 
-    {filter: hue-rotate(0deg);}
-}
-
-section .container {
-    display: flex;
-}
-
-section .container .circle {
+.container{
     position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 0 -7.5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 1000px;
 }
 
-section .container .circle span {
+.container .box {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.container .box .imgBx {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    transform: rotate(calc(18deg * var(--i)));
-    /* 360 / 20 = 18deg */
+    transition: 1.5s ease-in-out;
 }
 
-section .container .circle span::before {
-   content: '';
-   position: absolute;
-   right: 0;
-   top: calc(50% - 7.5px);
-   width: 15px;
-   height: 15px;
-   background: #00ff0a;
-   border-radius: 50%;
-   box-shadow: 0 0 10px #00ff0a,
-   0 0 20px #00ff0a,
-   0 0 40px #00ff0a,
-   0 0 60px #00ff0a,
-   0 0 80px #00ff0a,
-   0 0 100px #00ff0a;
-   transform: scale(0.1);
-   animation: animate 4s linear infinite;
-   animation-delay: calc(0.1s * var(--i));
+.container .box:hover .imgBx{
+    transform: translateY(-100%);
 }
 
-@keyframes animate {
-    0%
-    {
-        transform: scale(1);
-    }
-
-    50%,100%
-    {
-        transform: scale(0.1);
-    }
+.container .box .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-section .container .circle:nth-child(2){
-    transform: rotate(-180deg);
+.container .box .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 1.5s ease-in-out;
 }
 
-section .container .circle:nth-child(2) span::before{
-    animation-delay: calc(-0.1s * var(--i));
+.container .box .layer.layer1{
+    background: #0096ff;
+    transform: translateY(100%);
+}
+
+.container .box:hover .layer.layer1{
+    background: #0096ff;
+    transform: translateY(-100%);
+}
+
+.container .box .layer.layer2{
+    background: #90ff00;
+    transform: translateY(200%);
+}
+
+.container .box:hover .layer.layer2{
+    
+    transform: translateY(-100%);
+}
+
+.container .box .contentBx {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    color: #fff;
+    transition: 1.5s ease-in-out;
+    transform: translateY(300%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.container .box:hover .contentBx{
+    transform: translateY(0);
+}
+
+.container .box.contentBx div {
+    transition: 2s ease-in-out;
+    transform: translateY(400%);
+}
+
+.container .box:hover .contentBx div{
+    transform: translateY(0);
 }
